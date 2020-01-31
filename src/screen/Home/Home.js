@@ -54,6 +54,7 @@ function wait(timeout) {
 }
 
 function Home(props) {
+  console.log("propsH", props);
   const dispatch = useDispatch();
 
   const user = useSelector(state => getUser(state));

@@ -40,7 +40,7 @@ const status_descs = {
 };
 
 function ViewDetail(props) {
-  console.log("props", props);
+  console.log("propsV", props);
   const dispatch = useDispatch();
   const {
     request_dept_name,

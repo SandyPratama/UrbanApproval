@@ -32,6 +32,7 @@ import SearchInput, { createFilter } from "react-native-search-filter";
 import CompleteFlatList from "react-native-complete-flatlist";
 
 function Attachment(props) {
+  console.log("propsA", props);
   const dispatch = useDispatch();
   const {
     doc_no,
@@ -39,7 +40,7 @@ function Attachment(props) {
     document_descs,
     type
   } = props.navigation.state.params.data;
-  console.log(props.navigation.state.params.data);
+  //console.log(props.navigation.state.params.data);
 
   const user = useSelector(state => getUser(state));
   const [load, setLoad] = useState(true);

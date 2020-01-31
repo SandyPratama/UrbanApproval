@@ -122,7 +122,7 @@ function Detail(props) {
   };
 
   const dispatch = useDispatch();
-
+  console.log("propsD", props);
   const {
     approval_name,
     approval_user,

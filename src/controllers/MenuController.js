@@ -34,7 +34,7 @@ class MenuController {
     }
   };
 
-  getDetail = async (app_user, approval_id, approval_status) => {
+  getDetail = async (app_user, approval_id) => {
     try {
       const result = await httpClient.request({
         url: `${this.appPath}/viewMenu`,
@@ -44,8 +44,7 @@ class MenuController {
         },
         data: {
           approval_user: app_user,
-          approval_id: approval_id,
-          approval_status: approval_status
+          approval_id: approval_id
         }
       });
       return result;
