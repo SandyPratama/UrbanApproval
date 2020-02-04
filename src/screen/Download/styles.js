@@ -1,5 +1,6 @@
 const React = require("react-native");
-const { Platform } = React;
+const { Platform, Dimensions } = React;
+const dw = Dimensions.get("window").width;
 
 export default {
   layoutContent: {
@@ -460,9 +461,18 @@ export default {
     marginTop: 5,
     fontSize: 14
   },
-  viewButton: {
+  picWidth: {
+    width: dw * 0.9,
+    alignSelf: "center"
+  },
+  textWhite: {
+    color: "#FFFFFF",
+    fontFamily: "Montserrat-Regular"
+  },
+  pdf: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between"
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+    backgroundColor: "#333"
   }
 };

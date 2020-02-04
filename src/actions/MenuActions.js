@@ -111,7 +111,7 @@ export const getDetail = (userId, approval_id) => async dispatch => {
   dispatch(detailRequest());
   try {
     const detail = await MenuController.getDetail(userId, approval_id);
-
+    console.log("detail", detail);
     dispatch(detailSuccess(detail));
   } catch (error) {
     dispatch(detailError(error));
@@ -123,17 +123,19 @@ export const getOtorisasi = (entity, docNo, modules) => async dispatch => {
 
   try {
     const otorisasi = await MenuController.getOtorisasi(entity, docNo, modules);
-
+    //console.log("otorisasi", otorisasi);
     dispatch(otorisasiSuccess(otorisasi));
   } catch (error) {
     dispatch(otorisasiError(error));
   }
 };
 
-export const getAttachment = (entity, docNo, type) => async dispatch => {
+export const getAttachment = (entity, docNo) => async dispatch => {
   dispatch(attachmentRequest());
   try {
-    const attachment = await MenuController.getAttachment(entity, docNo, type);
+    const attachment = await MenuController.getAttachment(entity, docNo);
+    console.log("attachment", attachment);
+
     dispatch(attachmentSuccess(attachment));
   } catch (error) {
     dispatch(attachmentError(error));

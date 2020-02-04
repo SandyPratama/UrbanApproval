@@ -459,5 +459,23 @@ export default {
     fontFamily: "Montserrat-SemiBold",
     marginTop: 5,
     fontSize: 14
+  },
+  bgBotA: {
+    flex: 1,
+    width: "90%",
+    marginHorizontal: "5%",
+    marginTop: 30,
+    backgroundColor: "rgba(18, 18, 18, 0.3)",
+    borderRadius: 5
+  },
+  bgBot: {
+    backgroundColor: "#333335",
+    borderTopWidth: 0.5,
+    borderColor: "#333335"
+  },
+  attach: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   }
 };

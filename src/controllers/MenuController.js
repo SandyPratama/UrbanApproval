@@ -69,15 +69,18 @@ class MenuController {
     }
   };
 
-  getAttachment = async (entity, docNo, type) => {
+  getAttachment = async (entity, docNo) => {
     try {
       const result = await httpClient.request({
         url: `${this.appPath}/getAttachment`,
         method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
         data: {
           entity_cd: entity,
-          doc_no: docNo,
-          type: type
+          doc_no: docNo
+          // type: type
         }
       });
       return result;

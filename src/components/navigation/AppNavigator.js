@@ -15,6 +15,7 @@ import Search from "../../screen/Detail/Search";
 
 import View from "../../screen/ViewDetail";
 import Attachment from "../../screen/Attachment";
+import Download from "../../screen/Download";
 
 import homeIcon from "assets/ic_home/ic_home.png";
 import settingsIcon from "assets/ic_settings/ic_settings.png";
@@ -40,7 +41,8 @@ const HomeStack = createStackNavigator({
   Home,
   Detail,
   View,
-  Attachment
+  Attachment,
+  Download
 });
 const AppStack = createStackNavigator(
   {

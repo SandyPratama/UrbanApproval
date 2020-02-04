@@ -62,6 +62,7 @@ function ViewDetail(props) {
 
   const user = useSelector(state => getUser(state));
   const otorisasi = useSelector(state => selectOtorisasi(state));
+  // console.log("otorisasi", otorisasi);
   const [isModalVisible, setModalVisible] = useState(false);
   const [activeType, setActiveType] = useState("");
   const data = props.navigation.state.params.data;
@@ -229,13 +230,24 @@ function ViewDetail(props) {
                 </View>
               </ListItem>
               <ListItem style={[styles.infoItem, styles.infoItemLast]}>
-                <View>
+                <View style={styles.viewButton}>
                   <Button
+                    bordered
+                    style={style.button}
                     onPress={() =>
                       props.navigation.navigate("Attachment", { data })
                     }
                   >
-                    <Text> Attachment </Text>
+                    <Text style={style.textAF}> Attachment </Text>
+                  </Button>
+                  <Button
+                    bordered
+                    style={style.button}
+                    onPress={() =>
+                      props.navigation.navigate("Attachment", { data })
+                    }
+                  >
+                    <Text style={style.textAF}> Form </Text>
                   </Button>
                 </View>
               </ListItem>
