@@ -89,6 +89,26 @@ class MenuController {
     }
   };
 
+  getForm = async (entity, docNo) => {
+    try {
+      const result = await httpClient.request({
+        url: `${this.appPath}/getForm`,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          entity_cd: entity,
+          doc_no: docNo
+          // type: type
+        }
+      });
+      return result;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+
   setApprove = async (status, data) => {
     try {
       const result = await httpClient.request({

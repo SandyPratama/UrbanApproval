@@ -5,7 +5,8 @@ import {
   ScrollView,
   ActivityIndicator,
   TextInput,
-  FlatList
+  FlatList,
+  Dimensions
 } from "react-native";
 import {
   Container,
@@ -26,15 +27,16 @@ import styles from "./styles";
 import Style from "../../Theme/Style";
 
 import getUser from "selectors/UserSelectors";
-import { getAttachment } from "../../actions/MenuActions";
-import { selectAttachment } from "../../selectors/MenuSelectors";
+import { getForm } from "../../actions/MenuActions";
+import { selectForm } from "../../selectors/MenuSelectors";
 import numFormat from "../../components/common/numFormat";
 import moment from "moment";
 import SearchInput, { createFilter } from "react-native-search-filter";
 import CompleteFlatList from "react-native-complete-flatlist";
 
-function Attachment(props) {
-  console.log("propsA", props);
+const { height, width } = Dimensions.get("window");
+function Form(props) {
+  console.log("propsF", props);
   const dispatch = useDispatch();
   const {
     doc_no,
@@ -45,17 +47,17 @@ function Attachment(props) {
 
   const user = useSelector(state => getUser(state));
   const [load, setLoad] = useState(true);
-  const attachment = useSelector(state => selectAttachment(state));
+  const form = useSelector(state => selectForm(state));
   //console.log("attac", attachment);
   const data = props.navigation.state.params.data;
 
-  const getAttachments = useCallback(async () => {
-    await dispatch(getAttachment(entity_cd, doc_no));
+  const getForms = useCallback(async () => {
+    await dispatch(getForm(entity_cd, doc_no));
     setLoad(false);
   }, [dispatch]);
 
   useEffect(() => {
-    getAttachments();
+    getForms();
   }, []);
 
   useEffect(() => {
@@ -75,7 +77,7 @@ function Attachment(props) {
 
         <View style={Style.actionBarLeft}></View>
         <View style={Style.actionBarMiddle}>
-          <Text style={Style.actionBarText}>{"Attachment".toUpperCase()}</Text>
+          <Text style={Style.actionBarText}>{"Form".toUpperCase()}</Text>
         </View>
         <View style={Style.actionBarRight}>
           {/* <Button
@@ -97,11 +99,20 @@ function Attachment(props) {
         contentContainerStyle={styles.layoutContent}
       >
         <ScrollView>
-          {attachment.map((data, key) => (
+          {form.map((data, key) => (
             <View style={styles.attach}>
-              <View key={key} style={[{ width: "100%" }]}>
+              <View
+                key={key}
+                //   style={[{ width: "100%" }]}
+              >
                 <Button
-                  style={{ marginTop: 20 }}
+                  style={{
+                    marginTop: 20,
+                    width: "60%",
+                    marginHorizontal: 15,
+                    marginVertical: 15,
+                    backgroundColor: "#34BFB8"
+                  }}
                   onPress={() =>
                     props.navigation.navigate("Download", {
                       data
@@ -125,10 +136,10 @@ function Attachment(props) {
   );
 }
 
-Attachment.navigationOptions = {
+Form.navigationOptions = {
   headerTransparent: true,
   headerTintColor: "white",
   headerTitleStyle: { color: "white" }
 };
 
-export default Attachment;
+export default Form;

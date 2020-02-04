@@ -477,10 +477,34 @@ export default {
     width: "40%",
     height: 40
   },
+  buttonGreen: {
+    // backgroundColor: "transparent",
+    backgroundColor: "#34BFB8",
+    shadowOpacity: 0.1,
+    elevation: 5,
+    width: "40%",
+    height: 40,
+    borderRadius: 8,
+    borderColor: "#34BFB8",
+    borderWidth: 2
+  },
+
+  buttonGreenOuter: {
+    backgroundColor: "transparent",
+    // backgroundColor: "#34BFB8",
+    shadowOpacity: 0.1,
+    elevation: 5,
+    width: "40%",
+    height: 40,
+    borderRadius: 8,
+    borderColor: "#34BFB8",
+    borderWidth: 2
+  },
   textAF: {
     color: "#fff",
     justifyContent: "center",
     textAlign: "center",
-    width: "100%"
+    fontSize: 14
+    // width: "100%"
   }
 };

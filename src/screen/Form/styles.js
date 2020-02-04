@@ -460,10 +460,22 @@ export default {
     marginTop: 5,
     fontSize: 14
   },
-  viewButton: {
+  bgBotA: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%"
+    width: "90%",
+    marginHorizontal: "5%",
+    marginTop: 30,
+    backgroundColor: "rgba(18, 18, 18, 0.3)",
+    borderRadius: 5
+  },
+  bgBot: {
+    backgroundColor: "#333335",
+    borderTopWidth: 0.5,
+    borderColor: "#333335"
+  },
+  attach: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   }
 };

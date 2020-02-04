@@ -233,22 +233,79 @@ function ViewDetail(props) {
                 <View style={styles.viewButton}>
                   <Button
                     bordered
-                    style={style.button}
+                    style={style.buttonGreen}
                     onPress={() =>
                       props.navigation.navigate("Attachment", { data })
                     }
                   >
-                    <Text style={style.textAF}> Attachment </Text>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        textAlign: "center",
+                        alignItems: "center",
+                        width: "100%"
+                      }}
+                    >
+                      <Icon
+                        active
+                        name="file-pdf"
+                        style={{ color: "#fff" }}
+                        type="MaterialCommunityIcons"
+                      />
+                      <Text
+                        style={{
+                          color: "#fff",
+                          fontSize: 13,
+                          paddingLeft: 5,
+                          textAlign: "center"
+                          // width: "100%"
+                        }}
+                      >
+                        Attachment
+                      </Text>
+                    </View>
                   </Button>
                   <Button
                     bordered
+                    style={style.buttonGreenOuter}
+                    onPress={() => props.navigation.navigate("Form", { data })}
+                  >
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        textAlign: "center",
+                        alignItems: "center",
+                        width: "100%"
+                      }}
+                    >
+                      <Icon
+                        active
+                        name="file-pdf"
+                        style={{ color: "#fff" }}
+                        type="MaterialCommunityIcons"
+                      />
+                      <Text
+                        style={{
+                          color: "#fff",
+                          fontSize: 13,
+                          paddingLeft: 5,
+                          textAlign: "center"
+                          // width: "100%"
+                        }}
+                      >
+                        Form
+                      </Text>
+                    </View>
+                  </Button>
+                  {/* <Button
+                    bordered
                     style={style.button}
-                    onPress={() =>
-                      props.navigation.navigate("Attachment", { data })
-                    }
+                    onPress={() => props.navigation.navigate("Form", { data })}
                   >
                     <Text style={style.textAF}> Form </Text>
-                  </Button>
+                  </Button> */}
                 </View>
               </ListItem>
             </List>

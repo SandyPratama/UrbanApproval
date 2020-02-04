@@ -16,6 +16,10 @@ const attachmentState = {
   attachment: []
 };
 
+const formState = {
+  form: []
+};
+
 const menuReducer = (state = menuState, action) => {
   switch (action.type) {
     case actionTypes.MENU_REQUEST:
@@ -80,4 +84,26 @@ const attachmentReducer = (state = attachmentState, action) => {
   }
 };
 
-export { menuReducer, detailReducer, otorisasiReducer, attachmentReducer };
+const formReducer = (state = formState, action) => {
+  switch (action.type) {
+    case actionTypes.FORM_REQUEST:
+      return {
+        ...state
+      };
+    case actionTypes.FORM_SUCCESS:
+      return {
+        ...state,
+        form: action.form.Data
+      };
+    default:
+      return state;
+  }
+};
+
+export {
+  menuReducer,
+  detailReducer,
+  otorisasiReducer,
+  attachmentReducer,
+  formReducer
+};

@@ -5,7 +5,8 @@ import {
   menuReducer,
   detailReducer,
   otorisasiReducer,
-  attachmentReducer
+  attachmentReducer,
+  formReducer
 } from "./MenuReducer";
 import status from "./StatusReducer";
 
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   menuReducer,
   detailReducer,
   otorisasiReducer,
-  attachmentReducer
+  attachmentReducer,
+  formReducer
 });
 
 export default rootReducer;

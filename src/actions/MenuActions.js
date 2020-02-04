@@ -24,7 +24,12 @@ export const actionTypes = {
   ATTACHMENT: "ATTACHMENT",
   ATTACHMENT_REQUEST: "ATTACHMENT_REQUEST",
   ATTACHMENT_ERROR: "ATTACHMENT_ERROR",
-  ATTACHMENT_SUCCESS: "ATTACHMENT_SUCCESS"
+  ATTACHMENT_SUCCESS: "ATTACHMENT_SUCCESS",
+
+  FORM: "FORM",
+  FORM_REQUEST: "FORM_REQUEST",
+  FORM_ERROR: "FORM_ERROR",
+  FORM_SUCCESS: "FORM_SUCCESS"
 };
 
 const menuRequest = () => ({
@@ -97,6 +102,20 @@ const attachmentError = error => ({
   error
 });
 
+const formRequest = () => ({
+  type: actionTypes.FORM
+});
+
+const formSuccess = form => ({
+  type: actionTypes.FORM_SUCCESS,
+  form
+});
+
+const formError = error => ({
+  type: actionTypes.FORM_ERROR,
+  error
+});
+
 export const getMenu = userId => async dispatch => {
   dispatch(menuRequest());
   try {
@@ -111,7 +130,7 @@ export const getDetail = (userId, approval_id) => async dispatch => {
   dispatch(detailRequest());
   try {
     const detail = await MenuController.getDetail(userId, approval_id);
-    console.log("detail", detail);
+    //console.log("detail", detail);
     dispatch(detailSuccess(detail));
   } catch (error) {
     dispatch(detailError(error));
@@ -139,6 +158,18 @@ export const getAttachment = (entity, docNo) => async dispatch => {
     dispatch(attachmentSuccess(attachment));
   } catch (error) {
     dispatch(attachmentError(error));
+  }
+};
+
+export const getForm = (entity, docNo) => async dispatch => {
+  dispatch(formRequest());
+  try {
+    const form = await MenuController.getForm(entity, docNo);
+    console.log("form", form);
+
+    dispatch(formSuccess(form));
+  } catch (error) {
+    dispatch(formError(error));
   }
 };
 
