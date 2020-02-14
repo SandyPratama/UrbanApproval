@@ -32,9 +32,10 @@ import numFormat from "../../components/common/numFormat";
 import moment from "moment";
 import SearchInput, { createFilter } from "react-native-search-filter";
 import CompleteFlatList from "react-native-complete-flatlist";
-
+import RNFS from "react-native-fs";
+import FileViewer from "react-native-file-viewer";
 function Attachment(props) {
-  console.log("propsA", props);
+  
   const dispatch = useDispatch();
   const {
     doc_no,
@@ -54,6 +55,26 @@ function Attachment(props) {
     setLoad(false);
   }, [dispatch]);
 
+  const openSample = () => {
+    
+      const url = attachment[0].url_attachment;
+      //const SavePath = `${RNFS.DocumentDirectoryPath}/temporaryfile.pdf`;
+      const SavePath = `${RNFS.DocumentDirectoryPath}/${attachment[0].file_attachment}`;
+      const path = {
+        fromUrl: url,
+        toFile: SavePath
+      };
+      
+      RNFS.downloadFile(path)
+        .promise.then(() => FileViewer.open(SavePath))
+        .then(success => {
+          console.log("success", success);
+        })
+        .catch(error => {
+          console.log("error", error);
+        });
+    };
+
   useEffect(() => {
     getAttachments();
   }, []);
@@ -63,6 +84,7 @@ function Attachment(props) {
       props.navigation.navigate("App");
     }
   });
+
 
   return (
     <Container>
@@ -100,14 +122,29 @@ function Attachment(props) {
           {attachment.map((data, key) => (
             <View style={styles.attach}>
               <View key={key} style={[{ width: "100%" }]}>
-                <Button
+                {/* <Button
                   style={{ marginTop: 20 }}
                   onPress={() =>
                     props.navigation.navigate("Download", {
                       data
                     })
                   }
-                >
+                > */}
+                <Button 
+                style={{ 
+                marginTop: 20, 
+                width: "60%", 
+                marginHorizontal: 15, 
+                marginVertical: 15, 
+                backgroundColor: "#34BFB8" 
+                }} 
+                // onPress={() => 
+                //   props.navigation.navigate("Download", { 
+                //     data 
+                //   }) 
+                // } 
+                onPress={openSample.bind(this)} 
+              >
                   <Icon
                     active
                     name="file-pdf"
